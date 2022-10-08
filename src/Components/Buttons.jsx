@@ -81,9 +81,9 @@ const Buttons = () => {
     setCalc({
       ...calc,
       num: numValue,
-        // num1: calc.num,
-        num2: calc.res,
-        displaySign: calc.sign
+      // num1: calc.num,
+      num2: calc.res,
+      displaySign: calc.sign,
     });
   };
   const handleButton = (e) => {
@@ -97,7 +97,7 @@ const Buttons = () => {
         num: 0,
         // num1: calc.num,
         num2: calc.res,
-        displaySign: calc.sign
+        displaySign: calc.sign,
       });
     } else if (value === equal) {
       if (calc.num && calc.res) {
@@ -105,18 +105,16 @@ const Buttons = () => {
           const result = {
             "+": (a, b) => a + b,
             "-": (a, b) => a - b,
-            "X": (a, b) => a * b,
+            X: (a, b) => a * b,
             "/": (a, b) => a / b,
           };
-          return (result[sign](a, b));
+          return result[sign](a, b);
         };
         setCalc({
           sign: "",
           res: math(calc.res, calc.num, calc.sign),
           num: 0,
-          num1: '',
-          num2: '',
-          displaySign: ''
+          displaySign: "",
         });
       }
     } else if (value === decimal) {
@@ -130,9 +128,7 @@ const Buttons = () => {
         sign: "",
         num: 0,
         res: 0,
-        num1: '',
-        num2: '',
-        displaySign: ''
+        displaySign: "",
       });
     } else {
       handleClickButton(value);
